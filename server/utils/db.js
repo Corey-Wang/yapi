@@ -19,12 +19,21 @@ function connect(callback) {
   mongoose.set('useCreateIndex', true);
 
   let config = yapi.WEBCONFIG;
-  let options = {useNewUrlParser: true, useCreateIndex: true};
+  let options = {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true};
 
   if (config.db.user) {
     options.user = config.db.user;
     options.pass = config.db.pass;
   }
+
+  if (config.db.reconnectTries) {
+    options.reconnectTries = config.db.reconnectTries;
+  }
+
+  if (config.db.reconnectInterval) {
+    options.reconnectInterval = config.db.reconnectInterval;
+  }
+
 
   options = Object.assign({}, options, config.db.options)
 

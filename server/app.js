@@ -27,7 +27,7 @@ app.proxy = true;
 yapi.app = app;
 
 // app.use(bodyParser({multipart: true}));
-app.use(koaBody({ multipart: true, jsonLimit: '2mb', formLimit: '1mb', textLimit: '1mb' }));
+app.use(koaBody({strict: false, multipart: true, jsonLimit: '2mb', formLimit: '1mb', textLimit: '1mb' }));
 app.use(mockServer);
 app.use(router.routes());
 app.use(router.allowedMethods());
@@ -54,9 +54,14 @@ app.use(async (ctx, next) => {
   await next();
 });
 
+
 app.use(koaStatic(yapi.path.join(yapi.WEBROOT, 'static'), { index: indexFile, gzip: true }));
 
-app.listen(yapi.WEBCONFIG.port);
+
+const server = app.listen(yapi.WEBCONFIG.port);
+
+server.setTimeout(yapi.WEBCONFIG.timeout);
+
 commons.log(
   `服务已启动，请打开下面链接访问: \nhttp://127.0.0.1${
     yapi.WEBCONFIG.port == '80' ? '' : ':' + yapi.WEBCONFIG.port

@@ -1,3 +1,48 @@
+## [1.10.2](https://github.com/YMFE/yapi/compare/v1.10.1...v1.10.2) (2021-10-13)
+
+### Bug Fixes
+
+* [2361] 修复所有分类被删除时,同步问题. 解决方案: 增加 "默认分类" ([01207e2](https://github.com/YMFE/yapi/commit/01207e29cdceba2ea783d6e06b983cc34b283d51))
+* issues 2357 ([5bab76c](https://github.com/YMFE/yapi/commit/5bab76c14429e7fb46f16d7b0d06851cf98b82e1))
+
+### Features
+
+* add nonexistent tags from `/interface/(add/up/save)` ([#1918](https://github.com/YMFE/yapi/issues/1918)) ([4d24c39](https://github.com/YMFE/yapi/commit/4d24c397483d2703e85c6977236270f52edf2d70))
+
+## 1.10.1
+
+### Bug Fixes
+
+* 修复沙盒漏洞
+
+
+## v1.9.2
+* fix: 修复高级 mock 无效的bug
+* opti: 对登录 email 空格的过滤
+* fix: 修复deepMath 增加对原型属性比较
+
+## v1.9.1
+* 修复因 mongodb 一个废弃报错导致部署不成功问题
+
+## v1.9.0
+* 修复测试集合部分情况下闪动问题
+* 修改ldap filter的匹配规则，使其可以匹配&和|操作符  Merge pull request #1631 from vvkkhjt/master
+* support switch_notice for /interface/save  Merge pull request #1646 from tangcent/feature/openapi_notice
+* 自动化测试时服务端测试node默认2分钟没有返回就直接断掉连接，可以手动设置一个超时时间 Merge pull request #1675 from liugddx/master
+* 修复导出的swagger.json 中 required 一直是 false 的 bug
+* 修复 schema2json传required参数时，导致faker失败
+* 修改ldap filter的匹配规则 
+* 更新 sm2tsservice 3.2.0及以后版本的使用配置
+
+## v1.8.8
+* 更新了 cross-request [教程](https://juejin.im/post/5e3bbd986fb9a07ce152b53d)，发布了最新的 3.1 版本 
+
+## v1.8.7
+* 因 chrome 官方下架了 yapi 扩展，整理了本地安装教程
+
+## v1.8.6
+* 优化 swagger 文档导入分类策略，优先使用根路径的 tags 做分类，避免出现特别多分类的问题
+
 ## v1.8.5
 * 改善 swagger 自动导入，不再支持秒级别的 cron 表达式,默认使用 10分钟更新一次的频率
 * 修复输入空的 swagger地址 ，会发起请求的 bug

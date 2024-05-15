@@ -130,7 +130,7 @@ function mockValidator(interfaceData, ctx) {
   if (noRequiredArr.length > 0 || (validResult && !validResult.valid)) {
     let message = `错误信息：`;
     message += noRequiredArr.length > 0 ? `缺少必须字段 ${noRequiredArr.join(',')}  ` : '';
-    message += validResult && !validResult.valid ? `shema 验证请求参数 ${validResult.message}` : '';
+    message += validResult && !validResult.valid ? `schema 验证请求参数 ${validResult.message}` : '';
 
     return {
       valid: false,
@@ -328,7 +328,7 @@ module.exports = async (ctx, next) => {
       if (project.is_mock_open && project.project_mock_script) {
         // 项目层面的mock脚本解析
         let script = project.project_mock_script;
-        yapi.commons.handleMockScript(script, context);
+        await yapi.commons.handleMockScript(script, context);
       }
 
       await yapi.emitHook('mock_after', context);

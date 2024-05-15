@@ -1,4 +1,4 @@
-const schema = require('./shema-transformTo-table.js');
+const schema = require('./schema-transformTo-table.js');
 const _ = require('underscore');
 
 const json_parse = function(json) {
@@ -258,7 +258,7 @@ function createInterMarkdown(basepath, listItem, isToc) {
   let mdTemplate = ``;
   const toc = `[TOC]\n\n`;
   // 接口名称
-  mdTemplate += `\n## ${escapeStr(`${listItem.title}\n<a id=${listItem.title}> </a>`, isToc)}\n`;
+  mdTemplate += `\n## ${escapeStr(`${listItem.title}\n<a id=${listItem.title + listItem.catid}> </a>`, isToc)}\n`;
   isToc && (mdTemplate += toc);
   // 基本信息
   mdTemplate += createBaseMessage(basepath, listItem);
